@@ -4,6 +4,7 @@ import numpy as np
 from tensorflow.keras.preprocessing.image import load_img
 from tensorflow.keras.applications.vgg16 import preprocess_input
 import os
+from PIL import Image
 from tensorflow.keras.preprocessing import image
 import csv
 
