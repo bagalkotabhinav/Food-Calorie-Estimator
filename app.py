@@ -6,6 +6,7 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 import os
 from PIL import Image
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras.utils import img_to_array
 import csv
 
 app = Flask(__name__)
