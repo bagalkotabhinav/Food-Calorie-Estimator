@@ -29,6 +29,7 @@ numpy==1.26.4
 opt-einsum==3.3.0
 optree==0.12.1
 packaging==24.1
+Pillow==8.3.2 
 protobuf==4.25.4
 Pygments==2.18.0
 PySocks==1.7.1
