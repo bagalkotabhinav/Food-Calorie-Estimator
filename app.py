@@ -27,12 +27,10 @@ def allowed_file(filename):
            
 # Function to load and prepare the image in right shape
 def read_image(filename):
-
-    img = load_img(filename, target_size=(224, 224))
-    x  = image.img_to_array(img)
+    img = Image.open(filename).resize((224, 224))
+    x = img_to_array(img)
     x = np.expand_dims(x, axis=0)
-    x /=255
-    #x = preprocess_input(x)
+    x /= 255
     return x
 
 def read_nutrient_data(csv_file):
