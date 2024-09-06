@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="predict.css">
+    <style>
+      
+      body {
+        background-image: url("{{ url_for('static', filename='images/newb.jpg') }}"); /* Replace with your desired image URL */
+        background-size: cover; /* Resize image to cover entire viewport */
+        background-position: center; /* Center the image */
+        background-attachment: fixed; / 
+        background-color: #f0f0f0; /* Light gray background */
+      }
+  
+      .container {
+        margin-top: 40px; /* Add some top margin */
+      }
+  
+      h1 {
+        padding-bottom: 1000px ;
+        color: #69430e; /* Blue heading */
+      }
+  
+      /* Custom button style */
+      .custom-button {
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 50px; /* Rounded corners */
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+  
+      /* "Choose File" button */
+      .choose-file {
+        background-color: #f1c40f; /* Orange background */
+        color: #fff; /* White text */
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+  
+      /* "Predict" button */
+      .predict {
+        background-color: #2ecc71; /* Green background */
+        color: #fff; /* White text */
+        border: none;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+      }
+  
+      /* Button hover effects */
+      .custom-button:hover {
+        transform: scale(1.05); /* Slight scale on hover */
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .col-lg-5 {
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-block: 10px;
+        background-color: #fff; /* White background */
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+        border-radius: 15px; /* Increased corner radius */
+        max-width: 400px;
+        margin: 12px ;
+        margin-right: 150px;
+        margin-bottom: 50px;
+        width: 350px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .col-lg-5:hover {
+        background-color: #f5f5f5; /* Light gray on hover */
+        transform: scale(1.03); /* Slightly larger zoom */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+      }
+
+      .col-lg-7 {
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-block: 10px;
+        background-color: #fff; /* White background */
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+        border-radius: 15px; /* Increased corner radius */
+        width: 275px;
+        margin: 12px ;
+        margin-left: 200px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .col-lg-7:hover {
+        background-color: #f5f5f5; /* Light gray on hover */
+        transform: scale(1.03); /* Slightly larger zoom */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+      }
+
+      h4 {
+        margin-bottom: 10px;
+        font-weight: 400; /* Regular font weight */
+        color: #555; /* Slightly darker text color */
+        font-family: 'Open Sans', sans-serif; /* Added font family for a cleaner look */
+      }
+
+      mark {
+        background-color: linear-gradient(to right, #ff748c 0%, #ff9f80 100%); /* Warmer gradient */
+        color: white;
+        padding: 7px 15px;
+        border-radius: 10px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Text shadow for depth */
+        animation: animate-highlight 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes animate-highlight {
+        0% {
+          box-shadow: 0 0 7px #ff748c; /* Inner shadow animation with warmer color */
+        }
+        50% {
+          box-shadow: 0 0 14px #ff9f80;
+        }
+        100% {
+          box-shadow: 0 0 7px #ff748c;
+        }
+      }
+
+    
+    </style>
+    <title>Food Calorie Estimator</title>
+</head>
+<body>
+  <div class="container">
+
+    <div class="col-lg-12">
+      <center><h1 style="padding:30px;font-weight: 600 !important;font-size: 3.2em"></h1></center>
+    </div>
+
+    
+
+    <div class="col-lg-12">
+      <center><form  class="form-inline" action = "/predict" method = "post" enctype="multipart/form-data">
+          <input type="file" name="file" class="choose-file custom-button" /><br>
+          <input type = "submit" class="predict custom-button" value="Predict">
+      </form></center>
+    </div>
+
+    <div class="col-lg-7" >
+      <span class="border border-primary">
+        <img src="{{ user_image }}" alt="User Image" class="img-thumbnail" style="width:250px;height:250px;float:right">
+      </span>
+    </div>
+
+    <div class="col-lg-5" >
+      <h4><b>Food Item: </b>  <mark style="background-color:#04aa6d;color:white;border-radius:5px">{{fruit}}</mark></h4>
+      <h4><b>Per serving: </b> {{ps}} g</h4>
+      <h4><b>Calories: </b> {{kcal}} kcal</h4>
+      <h4><b>Protein: </b> {{prot}} g</h4>
+      <h4><b>Carbs: </b> {{carb}} g</h4>
+      <h4><b>Fats: </b> {{fats}} g</h4>
+    </div>
+  </div>
+</div>
+</body>
+</html>

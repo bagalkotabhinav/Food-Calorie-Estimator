@@ -1,0 +1,51 @@
+ body {
+      background-image: url("{{ url_for('static', filename='images/bck.jpg') }}"); /* Replace with your desired image URL */
+      background-size: cover; /* Resize image to cover entire viewport */
+      background-position: center; /* Center the image */
+      background-attachment: fixed; / 
+      background-color: #f0f0f0; /* Light gray background */
+    }
+
+    .container {
+      margin-top: 40px; /* Add some top margin */
+    }
+
+    h1 {
+      padding-bottom: 1000px ;
+      color: #ebd9c1; /* Blue heading */
+    }
+
+    /* Custom button style */
+    .custom-button {
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 50px; /* Rounded corners */
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* "Choose File" button */
+    .choose-file {
+      background-color: #f1c40f; /* Orange background */
+      color: #fff; /* White text */
+      border: none;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* "Predict" button */
+    .predict {
+      background-color: #2ecc71; /* Green background */
+      color: #fff; /* White text */
+      border: none;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    /* Button hover effects */
+    .custom-button:hover {
+      transform: scale(1.05); /* Slight scale on hover */
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+  

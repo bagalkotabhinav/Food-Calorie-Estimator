@@ -1,0 +1,3 @@
+venv/
+indian_food_model.hdf5/indian_food_model.hdf5
+*.hdf5
